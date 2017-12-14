@@ -20,7 +20,7 @@ defmodule Todobird.Mixfile do
   def application do
     [
       mod: {Todobird.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :comeonin]
     ]
   end
 
@@ -38,7 +38,10 @@ defmodule Todobird.Mixfile do
       {:phoenix_ecto, "~> 3.2"},
       {:postgrex, ">= 0.0.0"},
       {:gettext, "~> 0.11"},
-      {:cowboy, "~> 1.0"}
+      {:cowboy, "~> 1.0"},
+
+      {:comeonin, "~> 4.0"},
+      {:pbkdf2_elixir, "~> 0.12"}
     ]
   end
 

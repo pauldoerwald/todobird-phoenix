@@ -5,7 +5,9 @@ defmodule TodobirdWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", TodobirdWeb do
+  scope "/api/v1/", TodobirdWeb do
     pipe_through :api
+
+    resources "/users", UserController, except: [:new, :edit]
   end
 end
