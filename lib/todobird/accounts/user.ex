@@ -9,7 +9,7 @@ defmodule Todobird.Accounts.User do
     field :name, :string
     field :password, :string, virtual: true
     field :password_hash, :string
-
+    has_many :todo_lists, Todobird.Todos.TodoList
     timestamps()
   end
 
