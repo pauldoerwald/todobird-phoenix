@@ -36,6 +36,8 @@ defmodule TodobirdWeb.Endpoint do
     key: "_todobird_key",
     signing_salt: "5O4zVmvT"
 
+  plug Corsica, origins: "*", allow_headers: ["content-type"]
+
   plug TodobirdWeb.Router
 
   @doc """

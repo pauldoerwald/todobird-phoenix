@@ -2,14 +2,15 @@ defmodule TodobirdWeb.Router do
   use TodobirdWeb, :router
 
   pipeline :api do
-    plug :accepts, ["json"]
+    plug :accepts, ["json-api"]
+    plug JaSerializer.ContentTypeNegotiation
+    plug JaSerializer.Deserializer
   end
 
-  scope "/api/v1/", TodobirdWeb do
+  scope "/api/v1", TodobirdWeb do
     pipe_through :api
 
-    resources "/users", UserController, except: [:new, :edit] do
-      resources "/todo_lists", TodoListController, except: [:new, :edit]
-    end
+    resources "/users", V1.UserController, except: [:new, :edit]
+    resources "/todo-lists", V1.TodoListController, except: [:new, :edit]
   end
 end
