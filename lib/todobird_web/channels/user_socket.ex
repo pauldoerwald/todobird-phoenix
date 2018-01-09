@@ -2,7 +2,7 @@ defmodule TodobirdWeb.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", TodobirdWeb.RoomChannel
+  channel "user:*", TodobirdWeb.UserChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
