@@ -20,29 +20,29 @@ defmodule TodobirdWeb.UserChannel do
     {:reply, {:ok, payload}, socket}
   end
 
-  def handle_in("updatedTodoListItem", payload, socket) do
+  def handle_in("updatedTodoList", payload, socket) do
     {todo_list_id, _} = Integer.parse(payload["todoListId"])
     todo_list = Todobird.Todos.get_todo_list!(todo_list_id)
     # |> Todobird.Repo.preload(:user)
     # newpayload = JaSerializer.format(TodobirdWeb.V1.TodoListView, todo_list, %{}, %{include: "user"})
     newpayload = JaSerializer.format(TodobirdWeb.V1.TodoListView, todo_list)
-    broadcast socket, "updatedTodoListItem", newpayload
+    broadcast socket, "updatedTodoList", newpayload
     {:reply, {:ok, payload}, socket}
   end
 
-  def handle_in("deletedTodoListItem", payload, socket) do
+  def handle_in("deletedTodoList", payload, socket) do
     IO.inspect payload, label: "Payload"
-    broadcast socket, "deletedTodoListItem", payload
+    broadcast socket, "deletedTodoList", payload
     {:reply, {:ok, payload}, socket}
   end
 
-  def handle_in("newTodoListItem", payload, socket) do
+  def handle_in("newTodoList", payload, socket) do
     {todo_list_id, _} = Integer.parse(payload["todoListId"])
     todo_list = Todobird.Todos.get_todo_list!(todo_list_id)
     |> Todobird.Repo.preload(:user)
     newpayload = JaSerializer.format(TodobirdWeb.V1.TodoListView, todo_list, %{}, %{include: "user"})
     # newpayload = JaSerializer.format(TodobirdWeb.V1.TodoListView, todo_list)
-    broadcast socket, "newTodoListItem", newpayload
+    broadcast socket, "newTodoList", newpayload
     {:reply, {:ok, payload}, socket}
   end
 
