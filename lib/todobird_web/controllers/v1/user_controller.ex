@@ -11,7 +11,7 @@ defmodule TodobirdWeb.V1.UserController do
   def records(%Plug.Conn{params: %{"include" => include}}) do
     includes = String.split(include, ",")
     query = model()
-    query = if "todo_lists" in includes, do: preload(query, :todo_lists)
+    query = if "todo_lists" in includes, do: preload(query, :todo_lists), else: query
     query
   end
 

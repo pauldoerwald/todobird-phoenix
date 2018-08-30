@@ -16,7 +16,7 @@ defmodule TodobirdWeb.V1.TodoListController do
     query = model()
 
     # Add a line like this for every preload you want to allow; JaResource requires that you add them one-by-one
-    query = if "user" in includes, do: preload(query, :user)
+    query = if "user" in includes, do: preload(query, :user), else: query
     
     query
   end
