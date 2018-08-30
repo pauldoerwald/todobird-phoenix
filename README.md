@@ -6,14 +6,17 @@ To start your Phoenix server:
   * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
   * Start Phoenix endpoint with `mix phx.server`
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+Take a look at `router.ex`. You'll see the routes for a JSONAPI interface. If you're using macOS, I recommend `paw`.
 
-Ready to run in production? Please [check our deployment guides](http://www.phoenixframework.org/docs/deployment).
+In order to use the ember app, you'll first need to create a user. I recommend doing so in the `iex` command interface, by creating a changeset and persisting it with `Repo.insert(user_registration_changeset)`
 
-## Learn more
+Possible tasks:
 
-  * Official website: http://www.phoenixframework.org/
-  * Guides: http://phoenixframework.org/docs/overview
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
+* create todos
+* require a working Authorization: Bearer token (even if it's just an arbitrary value)
+* associate a bearer token with a user account
+* prevent pushing another user's todo lists to the logged-in user's window
+* use Guardian to generate JWT tokens
+* to support OAuth2 "password" logins you WON'T need Ueberauth
+
+These todos get increasingly difficult. OAuth is HARD. Feel free to add other stuff, forms, improve the UI, or do whatever. Only take on OAuth if you really feel courageous.
